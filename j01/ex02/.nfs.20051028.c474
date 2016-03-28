@@ -1,0 +1,14 @@
+#!/usr/bin/php
+<?php
+echo "Entrez un nombre: ";
+$line = trim(fgets(STDIN));
+	if (is_numeric($line))
+	{
+		if ($line % 2 == 0)
+			echo "le chiffre ".$line." est Pair\n";
+		else	
+			echo "le chiffre ".$line." est Impair\n";
+	}
+	else
+		echo "'".$line"' n'est pas un chiffre\n";
+?>

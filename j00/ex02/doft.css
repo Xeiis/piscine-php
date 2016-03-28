@@ -1,0 +1,113 @@
+html{
+	height:100%;
+}
+body{
+	background-color:#666;
+	height:100%;
+	margin:0;
+}
+
+.container{
+	margin-top:20px;
+	height:100%;
+}
+
+.block{
+	border-radius:10px;
+	box-shadow:10px 10px 10px #222222;
+}
+.all_block{
+	background-color:#909090;
+}
+
+.header{
+	width:70%;
+	height:150px;
+	margin-bottom:20px;
+}
+
+.float_left{
+	float:left;
+}
+
+.float_right{
+	float:right;
+}
+
+#day_of_the_42{
+	margin-top:10px;
+}
+
+#reload{
+	position:relative;
+	top:10px;
+	right:10px;
+}
+
+#close{
+	position:relative;
+	top:120px;
+	right:-10px;
+}
+
+#loupe{
+	margin-right:-10px;
+}
+
+.first{
+	padding-top:15px;
+}
+
+.side_block{
+	height:31%;
+	width:6%;
+	float:left;
+	padding-bottom:20px;
+}
+#block_left{
+	margin-left:410px;
+}
+#middle_block{
+	width:53%;
+	height:760px;
+	float:left;
+	margin-left:25px;
+	padding:10px;
+}
+
+#brick{
+	background-image:url(resources/brick.jpg);
+	height:72px;
+	margin:12px;
+}
+
+.last_block{
+	background-color:#7DFF7D;
+	width:25%;
+	height:17%;
+	top:850px;
+	left:315px;
+	position:absolute;
+	font-size:25px;
+	text-align:left;
+	font-family: "Times New Roman", Georgia, Serif;
+}
+
+#entrez{
+	font-size:40px;
+}
+
+#submit{
+	width:80%;
+	margin-left:15px;
+}
+
+#ordinateurs{
+	text-shadow: 6px 6px 5px #FB3729;
+}
+
+p{
+	margin:0;
+	margin-top: 5px;
+	margin-left: 10px;
+}
