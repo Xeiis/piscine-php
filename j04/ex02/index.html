@@ -14,13 +14,16 @@
 		font: 1em sans-serif;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
+		width:100%;
+		margin-bottom:10px;
 	}
 	</style>
 	</head>
 	<body>
-	<form action="create.php" method="post">
-		<input type="text" name="login" value="" placeholder="Entrez votre login">
-		<input type="password" name="passwd" value="" placeholder="Entrez votre password">
+	<form action="modif.php" method="post">
+		<input type="text" name="login" value="" placeholder="Entrez votre login"></br>
+		<input type="password" name="oldpw" value="" placeholder="Entrez votre ancien password"></br>
+		<input type="password" name="newpw" value="" placeholder="Entrez votre nouveau password"></br>
 		<input type="submit" name="submit" value="OK">
 	</form>
 	</body>
