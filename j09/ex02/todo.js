@@ -1,7 +1,8 @@
 var x = getCookie('all');
-var res = x.replace(/-/g, "<div id=\"todo\" onclick=\"remove();suppr()\" class=\"all\">");
+var res = x.replace(/-/g, "<div id=\"todo\" onclick=\"if (confirm('sur?') == true) {remove();suppr()} else false\" class=\"all\">");
 var res = res.replace(/\//g, "</div>");
 document.getElementById('ft_list').innerHTML = res;
+
 
 function test()
 {
@@ -13,16 +14,17 @@ function test()
 	}
 	return str;
 }
+
 function suppr()
 {
 	setCookie('all', test(), 1);
 }
-//document.getElementById('ft_list').innerHTML = x;
+
 function AddTodo() {
 	var person = prompt("Please enter a To do", "");
 	var who = document.createElement('div');
 	who.setAttribute("id", "todo");
-	who.setAttribute("onclick", "remove();suppr()");
+	who.setAttribute("onclick", "if (confirm('sur?') == true) {remove();suppr()} else false");
 	who.setAttribute("class", "all");
 	var where = document.getElementById('ft_list');
 	who.innerHTML = person;
