@@ -37,7 +37,11 @@ function suppr(id){
 
 $('#new').click(function(){
 	var person = prompt("Please enter a To do", "");
-	var n = $('.all').length;
+	var x = $('.all').attr('onclick');
+	/([0-9]+)/.exec(x);
+	var n = parseInt(RegExp.$1) + 1;
+	if (isNaN(n))
+		n = 0;
 	html = "<div id=\"todo\" onclick=\"if (confirm('sur?') == true) {remove();suppr("+n+")}\" class=\"all\">"+person+"</div>";
 	if (person) {
 		$('#ft_list').prepend(html);
