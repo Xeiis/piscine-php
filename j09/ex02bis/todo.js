@@ -1,5 +1,5 @@
 var x = getCookie('all');
-var res = x.replace(/-/g, "<div id=\"todo\" onclick=\"remove();suppr()\" class=\"all\">");
+var res = x.replace(/-/g, "<div id=\"todo\" onclick=\"if (confirm('sur?') == true) {remove();suppr()} else false\" class=\"all\">");
 var res = res.replace(/\//g, "</div>");
 $('#ft_list').html(res);
 
@@ -14,13 +14,13 @@ function test()
 	return str;
 }
 
-$('#todo').click(function(){
+function suppr(){
 	setCookie('all', test(), 1);
-});
+}
 
 $('#new').click(function(){
 	var person = prompt("Please enter a To do", "");
-	html = "<div id=\"todo\" onclick=\"remove()\" class=\"all\">"+person+"</div>";
+	html = "<div id=\"todo\" onclick=\"if (confirm('sur?') == true) {remove();suppr()} else false\" class=\"all\">"+person+"</div>";
 	if (person) {
 		$('#ft_list').prepend(html);
 	}
