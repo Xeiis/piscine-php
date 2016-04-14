@@ -8,8 +8,6 @@ while ($array[$i] != NULL)
 {
     if ($array[$i] != $id && $array[$i -1] != $id)
         $str .= $array[$i].";";
-    else
-        echo $array[$i] . " != " . $id . " && " .$array[$i -1] . "!=" .$id."<br>";
     $i++;
 }
 file_put_contents("list.csv", $str);
