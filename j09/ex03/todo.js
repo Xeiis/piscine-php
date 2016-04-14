@@ -1,45 +1,55 @@
-var x = getCookie('all');
-var res = x.replace(/-/g, "<div id=\"todo\" onclick=\"remove();suppr()\" class=\"all\">");
-var res = res.replace(/\//g, "</div>");
-$('#ft_list').html(res);
-
-function test()
-{
-	var all = $('.all');
-	var str = "";
-	var rechCount = all.length;
-	for(i = 0; i < rechCount; i++)	{
-		str += "-" +all[i].innerHTML + "/";
-	}
-	return str;
-}
-
-$('#todo').click(function(){
-	setCookie('all', test(), 1);
+$(document).ready(function() {
+	$.ajax({
+			method: "GET",
+			url: "select.php"
+		})
+		.done(function( msg ) {
+			var array = msg.split(';');
+			var i = 0;
+			var res = '';
+			while(array[i])
+			{i++;}
+			while(i > 0)
+			{
+				if (i % 2 == 1) {
+					array[i] = array[i].replace(/-/g, "<div id=\"todo\" name=\""+array[i-1]+"\" onclick=\"if (confirm('sur?') == true) {remove():suppr("+array[i-1]+")}\" class=\"all\">");
+					array[i] = array[i].replace(/\//g, "</div>");
+					res += array[i];
+				}
+				i--;
+			}
+			var res = res.replace(/:/g, ";");
+			$('#ft_list').html(res);
+		});
 });
+
+function suppr(id){
+	$.ajax({
+			method: "POST",
+			url: "delete.php",
+			data: {id: id}
+		})
+		.done(function (msg) {
+			if (msg == 'Done')
+				alert('To do supprimer');
+		});
+}
 
 $('#new').click(function(){
 	var person = prompt("Please enter a To do", "");
-	html = "<div id=\"todo\" onclick=\"remove()\" class=\"all\">"+person+"</div>";
+	var n = $('.all').length;
+	html = "<div id=\"todo\" onclick=\"if (confirm('sur?') == true) {remove();suppr("+n+")}\" class=\"all\">"+person+"</div>";
 	if (person) {
 		$('#ft_list').prepend(html);
+		person = "-"+person+"/";
+		$.ajax({
+				method: "POST",
+				url: "insert.php",
+				data: {id: n, value : person}
+			})
+			.done(function (msg) {
+				if (msg == 'Done')
+					alert('Ajout Effectue');
+			});
 	}
-	setCookie('all', test(), 1);
 });
-
-function setCookie(cname, cvalue, exdays) {
-	var d = new Date();
-	d.setTime(d.getTime() + (exdays*24*60*60*1000));
-	var expires = "expires="+d.toUTCString();
-	document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-function getCookie(cname) {
-	var name = cname + "=";
-	var ca = document.cookie.split(';');
-	for(var i=0; i<ca.length; i++) {
-		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1);
-		if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-	}
-	return "";
-}
