@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+	<head>
+		<title>CaLc</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	</head>
+	<style>
+		div{
+			margin-left:auto;
+			margin-right:auto;
+			width:369px;
+		}
+	</style>
+	<body>
+		<div>
+			<input type="text" value="" id="left" placeholder="Entrez un chiffre">
+			<select id="operator">
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">*</option>
+				<option value="/">/</option>
+				<option value="%">%</option>
+			</select>
+			<input type="text" value="" id="right" placeholder="Entrez un chiffre">
+			<input type="submit" id="submit" value="Try me!">
+		</div>
+		<script>
+			$('#submit').click(function(){
+				var left = $('#left').val();
+				var right = $('#right').val();
+				var operator = $('#operator').val();
+				if ((parseFloat(left) != parseInt(left)) ||
+				(parseFloat(right) != parseInt(right)) ||
+				left < 0 || right < 0)
+				{
+					alert('Error :(');
+					console.log('Error :(');
+					return;
+				}		
+				if (right == 0 && (operator == '/' || operator == '%'))
+				{
+					alert('It\'s over 9000!');
+					console.log('It\'s over 9000!');
+					return;
+				}
+				if (operator == '+')
+				var result = parseInt(right) + parseInt(left);
+				else if (operator == '-')
+				var result = right - left;
+				else if (operator == '*')
+				var result = right * left;
+				else if (operator == '/')
+				var result = right / left;
+				else if (operator == '%')
+				var result = right % left;
+				else
+				{	
+					alert('Tu as modifier mes opérateurs ??');
+					return;
+				}
+					alert(result);
+				console.log(result);
+			});
+			function use_me()
+			{
+				alert('Please,use me...');
+				setTimeout(use_me,30000);
+			}
+			setTimeout(function(){use_me()}, 30000);
+		</script>
+	</body>
+</html>
