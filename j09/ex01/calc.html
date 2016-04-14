@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<title>CaLc</title>
+	</head>
+	<style>
+		div{
+			margin-left:auto;
+			margin-right:auto;
+			width:369px;
+		}
+	</style>
+	<body>
+		<div>
+			<input type="text" value="" id="left" placeholder="Entrez un chiffre">
+			<select id="operator">
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">*</option>
+				<option value="/">/</option>
+				<option value="%">%</option>
+			</select>
+			<input type="text" value="" id="right" placeholder="Entrez un chiffre">
+			<input type="submit" id="submit" value="Try me!">
+		</div>
+		<script>
+			var elem = document.getElementById('submit');
+			elem.onclick = function()
+			{
+				var left = document.getElementById('left');
+				var right = document.getElementById('right');
+				var operator = document.getElementById('operator');
+				if ((parseFloat(left.value) != parseInt(left.value)) ||
+				(parseFloat(right.value) != parseInt(right.value)) ||
+				left.value < 0 || right.value < 0)
+				{
+					alert('Error :(');
+					console.log('Error :(');
+					return;
+				}		
+				if (right.value == 0 && (operator.value == '/' || operator.value == '%'))
+				{
+					alert('It\'s over 9000!');
+					console.log('It\'s over 9000!');
+					return;
+				}
+				if (operator.value == '+')
+				var result = parseInt(right.value) + parseInt(left.value);
+				else if (operator.value == '-')
+				var result = right.value - left.value;
+				else if (operator.value == '*')
+				var result = right.value * left.value;
+				else if (operator.value == '/')
+				var result = right.value / left.value;
+				else if (operator.value == '%')
+				var result = right.value % left.value;
+				else
+				alert('Tu as modifier mes opérateurs ??');
+				alert(result);
+				console.log(result);
+			}
+			setInterval(function(){alert('Please, use me...')}, 30000);
+		</script>
+	</body>
+</html>

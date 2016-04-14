@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+		<title>BaLLooN</title>
+	</head>
+	<style>
+		#div{
+			width:200px;
+			height:200px;
+			background-color:red;
+			border-radius:500px;
+			margin-left:auto;
+			margin-right:auto;
+		}
+	</style>
+	<body>
+		<div id="div" onclick="grow()" onmouseout="slowdown()"></div>
+		<script>
+			var color = ["red", "green", "blue"];
+			var i = 1;
+			function grow()
+			{
+				var balloon = document.getElementById('div');
+				var hauteur = balloon.offsetHeight + 10;
+				var largeur = balloon.offsetWidth + 10;
+				if (hauteur > 420)
+				{
+					hauteur = 200;
+					largeur = 200;
+				}
+				balloon.style.height = hauteur + "px";
+				balloon.style.width = largeur + "px";
+				i++;
+				if (i == 3)
+					i = 0;
+				balloon.style.backgroundColor = color[i];
+			}
+			function slowdown()
+			{
+				var balloon = document.getElementById('div');
+				var hauteur = balloon.offsetHeight - 5;
+				var largeur = balloon.offsetWidth - 5;
+				if (hauteur < 200)
+				{
+					hauteur = 200;
+					largeur = 200;
+				}
+				balloon.style.height = hauteur + "px";
+				balloon.style.width = largeur + "px";
+				i--;
+				if (balloon.style.backgroundColor == '')
+					i--;
+				if (i < 0)
+					i = 3 + i;
+				balloon.style.backgroundColor = color[i];
+			}	
+		</script>
+	</body>
+</html>
